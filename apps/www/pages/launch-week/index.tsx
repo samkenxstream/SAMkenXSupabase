@@ -30,8 +30,17 @@ const LaunchWeekPrizeSection = dynamic(
 const TicketBrickWall = dynamic(() => import('~/components/LaunchWeek/8/TicketBrickWall'))
 const CTABanner = dynamic(() => import('~/components/CTABanner'))
 
+export interface Meetup {
+  id?: any
+  title: string
+  isLive: boolean
+  link: string
+  display_info: string
+  start_at: string
+}
 interface Props {
   users?: UserData[]
+  meetups?: Meetup[]
 }
 
 const supabaseAdmin = createClient(
@@ -42,7 +51,7 @@ const supabaseAdmin = createClient(
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9idWxkYW5ycHRsb2t0eGNmZnZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk3MjcwMTIsImV4cCI6MTk4NTMwMzAxMn0.SZLqryz_-stF8dgzeVXmzZWPOqdOrBwqJROlFES8v3I'
 )
 
-export default function TicketHome({ users }: Props) {
+export default function TicketHome({ users, meetups }: Props) {
   const { query } = useRouter()
 
   const TITLE = 'Supabase LaunchWeek 8'
@@ -168,7 +177,7 @@ export default function TicketHome({ users }: Props) {
             </SectionContainer>
 
             <SectionContainer>
-              <LW8Meetups />
+              <LW8Meetups meetups={meetups} />
             </SectionContainer>
 
             <SectionContainer>
@@ -205,9 +214,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
     .select('username, golden')
     .limit(17)
 
+  const { data: meetups } = await supabaseAdmin!.from('lw8_meetups').select('*')
+
   return {
     props: {
       users,
+      meetups,
     },
   }
 }

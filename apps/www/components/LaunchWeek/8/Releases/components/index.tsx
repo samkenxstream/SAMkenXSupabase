@@ -91,7 +91,7 @@ export const SmallCard = ({ className, children }: { className?: string; childre
   >
     <div
       className={[
-        'rounded-2xl text-sm text-[#9296AA] p-2 flex flex-row justify-between items-center backdrop-blur-md',
+        'rounded-2xl text-sm text-[#9296AA] p-2 flex flex-row justify-between items-center backdrop-blur-md h-full',
         'bg-[#030A0C]',
       ].join(' ')}
     >
@@ -319,7 +319,7 @@ export const SectionButtons = ({
 }
 
 export const CartTitle = ({ children }: { children: any }) => (
-  <span className="z-0 relative text-[#F4FFFA90] bg-clip-text bg-gradient-to-r from-[#F4FFFA] to-[#675FA7] tracking-[-.5px]">
+  <span className="z-0 relative text-[#F4FFFA90] bg-clip-text bg-gradient-to-r from-[#F4FFFA] to-[#675FA7] tracking-[-.5px] text-xl">
     {children}
     <div className="absolute -z-10 inset-0 w-full h-full bg-[#1C1C1C90] rounded-full blur-xl" />
   </span>
