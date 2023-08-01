@@ -1,5 +1,5 @@
-/studio/ @supabase/frontend
-/apps/www/ @supabase/frontend
-/apps/docs/ @supabase/docs
-/spec/ @supabase/docs
-/docker/ @supabase/cli
+/studio/samkenxstream@supabase/frontend
+/apps/www/samkenxstream@supabase/frontend
+/apps/docs/samkenxstream@supabase/docs
+/spec/samkenxstream@supabase/docs
+/docker/samkenxccore-engine-kapricorn@supabase/cli
